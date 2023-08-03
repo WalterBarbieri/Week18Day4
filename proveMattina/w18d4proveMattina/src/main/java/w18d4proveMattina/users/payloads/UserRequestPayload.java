@@ -1,4 +1,4 @@
-package w18d4proveMattina.users;
+package w18d4proveMattina.users.payloads;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

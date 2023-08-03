@@ -8,13 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import w18d4proveMattina.users.payloads.UserRequestPayload;
 
 @RestController
 @RequestMapping("/users")
@@ -25,13 +26,6 @@ public class UsersController {
 	@Autowired
 	public UsersController(UsersService us) {
 		this.us = us;
-	}
-
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public User saveUser(@RequestBody UserRequestPayload body) {
-		User userCreated = us.create(body);
-		return userCreated;
 	}
 
 	@GetMapping
@@ -55,11 +49,6 @@ public class UsersController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteUser(@PathVariable UUID userId) {
 		us.findByIdAndDelete(userId);
-	}
-
-	@GetMapping("/login/{email}")
-	public User getUserByEmail(@PathVariable String email) {
-		return us.findByEmail(email);
 	}
 
 }

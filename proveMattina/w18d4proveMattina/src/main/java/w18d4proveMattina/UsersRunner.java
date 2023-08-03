@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
 
-import w18d4proveMattina.users.UserRequestPayload;
 import w18d4proveMattina.users.UsersService;
+import w18d4proveMattina.users.payloads.UserRequestPayload;
 
 @Component
 public class UsersRunner implements CommandLineRunner {
@@ -25,7 +25,7 @@ public class UsersRunner implements CommandLineRunner {
 			String name = faker.name().firstName();
 			String surname = faker.name().lastName();
 			String email = faker.internet().emailAddress();
-			String password = faker.lorem().sentence(10);
+			String password = faker.lorem().characters(8, 15);
 			UserRequestPayload rndUser = new UserRequestPayload(name, surname, email, password);
 //			us.create(rndUser);
 		}

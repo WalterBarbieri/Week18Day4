@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import w18d4proveMattina.exceptions.BadRequestException;
 import w18d4proveMattina.exceptions.NotFoundException;
+import w18d4proveMattina.users.payloads.UserRequestPayload;
 
 @Service
 public class UsersService {
