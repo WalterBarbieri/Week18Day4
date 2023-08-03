@@ -57,4 +57,9 @@ public class UsersController {
 		us.findByIdAndDelete(userId);
 	}
 
+	@GetMapping("/login/{email}")
+	public User getUserByEmail(@PathVariable String email) {
+		return us.findByEmail(email);
+	}
+
 }

@@ -52,4 +52,9 @@ public class UsersService {
 		User found = this.findById(userId);
 		ur.delete(found);
 	}
+
+	public User findByEmail(String email) {
+		return ur.findByEmail(email)
+				.orElseThrow(() -> new NotFoundException("Nessun utente corrispondente a " + email + " trovato"));
+	}
 }

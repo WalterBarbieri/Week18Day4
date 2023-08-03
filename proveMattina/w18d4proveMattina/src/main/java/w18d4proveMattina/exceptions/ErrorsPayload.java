@@ -12,5 +12,4 @@ import lombok.Setter;
 public class ErrorsPayload {
 	private String message;
 	private Date timeStamp;
-	private int internalCode;
 }

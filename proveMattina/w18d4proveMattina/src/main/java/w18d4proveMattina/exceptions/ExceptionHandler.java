@@ -15,19 +15,26 @@ public class ExceptionHandler {
 	@org.springframework.web.bind.annotation.ExceptionHandler(BadRequestException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorsPayload handleBadRequest(BadRequestException e) {
-		return new ErrorsPayload(e.getMessage(), new Date(), 1564);
+		return new ErrorsPayload(e.getMessage(), new Date());
 	}
 
 	@org.springframework.web.bind.annotation.ExceptionHandler(NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ErrorsPayload handleNotFound(NotFoundException e) {
-		return new ErrorsPayload(e.getMessage(), new Date(), 265489542);
+		return new ErrorsPayload(e.getMessage(), new Date());
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
 	public ErrorsPayload handleGeneric(Exception e) {
 		log.error(e.getMessage());
-		return new ErrorsPayload("Errore generico, risolveremo il prima possibile", new Date(), 265489543);
+		return new ErrorsPayload("Errore generico, risolveremo il prima possibile", new Date());
+	}
+
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
+	@org.springframework.web.bind.annotation.ExceptionHandler(UnauthorizeException.class)
+	public ErrorsPayload handleUnauthorized(UnauthorizeException e) {
+		log.error(e.getMessage());
+		return new ErrorsPayload("Errore, non sei autorizzato", new Date());
 	}
 }
